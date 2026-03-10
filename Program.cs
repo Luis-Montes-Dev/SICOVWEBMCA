@@ -84,8 +84,7 @@ app.UseSession(); // Habilita el uso de sesiones
 
 app.UseAuthentication(); // Habilita la autenticación
 app.UseAuthorization(); // Habilita la autorización
-// Uso de Rotativa para generar PDFs
-app.UseRotativa();
+
 
 app.MapControllerRoute( // Configura las rutas de los controladores
     name: "default",

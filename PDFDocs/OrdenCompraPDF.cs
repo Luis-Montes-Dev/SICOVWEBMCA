@@ -1,28 +1,4 @@
-﻿/* Medidas de los contenedores y elementos en QuestPDF
- Available Space: (Width: 14,400.000, Height: 14,400.000)
-Space Plan: Wrap
-Wrap Reason: Forwarded from child
-------------------
-Content Direction: LeftToRight
-Min Width: 595
-Max Width: 595
-Min Height: 842
-Max Height: 842
-Enforce Size When Empty: True
-
-
-🔴 Padding
-===========
-Available Space: (Width: 595.000, Height: 842.000)
-Space Plan: Wrap
-Wrap Reason: Forwarded from child
------------
-Top: 20
-Right: 20
-Bottom: 20
-Left: 20
- */
-
+﻿
 using AspNetCoreGeneratedDocument;
 using Microsoft.CodeAnalysis.CSharp.Formatting;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +9,7 @@ using SICOVWEB_MCA.Models;
 using System.Globalization;
 using static QuestPDF.Helpers.Colors;
 
-namespace SICOVWEB_MCA
+namespace SICOVWEB_MCA.PDFDocs
 {
     public class OrdenCompraPDF : IDocument
     {
@@ -55,7 +31,7 @@ namespace SICOVWEB_MCA
                 page.Size(PageSizes.A4); // Tamaño de la página A4
                 page.Margin(20); // Margen de 20 unidades
                 page.DefaultTextStyle(x => x.FontSize(10)); // Estilo de texto por defecto
-                page.PageColor(Colors.White); // Color de fondo blanco
+                page.PageColor(White); // Color de fondo blanco
 
                 // Encabezado
                 page.Header().Column(header =>
@@ -63,7 +39,7 @@ namespace SICOVWEB_MCA
                     header.Spacing(5); // Espaciado entre elementos del encabezado
 
                     // Logo
-                    header.Item().AlignCenter().Width(550).MaxHeight(80).Image(System.IO.File.ReadAllBytes("wwwroot/images/Logos3.jpg"));
+                    header.Item().AlignCenter().Width(550).MaxHeight(80).Image(File.ReadAllBytes("wwwroot/images/Logos3.jpg"));
                     // Información de MCA
                     header.Item().AlignCenter().Text("MC AUTOMATIZACIÓN S.A. DE C.V.")
                                  .FontSize(14).Bold();
@@ -143,7 +119,7 @@ namespace SICOVWEB_MCA
                     header.Cell().Element(CellStyle).Text("TIEMPO ENTREGA").Bold();
 
                     static IContainer CellStyle(IContainer container) =>
-                        container.Padding(1).Background(Colors.Grey.Lighten3).Border(1).AlignCenter();
+                        container.Padding(1).Background(Grey.Lighten3).Border(1).AlignCenter();
                 });
 
                 // Filas dinámicas

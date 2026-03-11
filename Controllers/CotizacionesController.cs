@@ -8,6 +8,8 @@ using Rotativa.AspNetCore;
 using SICOVWEB_MCA.Extensions;
 using SICOVWEB_MCA.Helpers;
 using SICOVWEB_MCA.Models;
+using SICOVWEB_MCA.PDFDocs;
+
 using SICOVWEB_MCA.Models.ViewModels;
 using System.Net.NetworkInformation;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;

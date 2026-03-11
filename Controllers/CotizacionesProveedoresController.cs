@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using SICOVWEB_MCA.Extensions;
 using SICOVWEB_MCA.Helpers;
+using SICOVWEB_MCA.PDFDocs;
 using SICOVWEB_MCA.Models;
 using SICOVWEB_MCA.Models.ViewModels;
 

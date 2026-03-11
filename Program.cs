@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using QuestPDF.Infrastructure; // Asegúrate de tener este using
 using Rotativa.AspNetCore;
+using SICOVWEB_MCA.Helpers;
 using SICOVWEB_MCA.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -79,7 +80,7 @@ app.Use(async (context, next) =>
     await next();
 });
 
-app.UseMiddleware<SICOVWEB_MCA.ValidadorDatos>(); //Llamar al middleware de validacion de datos
+app.UseMiddleware<ValidadorDatos>(); //Llamar al middleware de validacion de datos
 //app.UseMiddleware<SICOVWEB_MCA.NoCacheMiddleware>();//Evita navegación con flechas "atrás" luego de logout
 app.UseSession(); // Habilita el uso de sesiones
 

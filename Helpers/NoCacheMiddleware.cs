@@ -1,4 +1,4 @@
-﻿namespace SICOVWEB_MCA
+﻿namespace SICOVWEB_MCA.Helpers
 {
     // Middleware para deshabilitar la caché en las respuestas HTTP
     public class NoCacheMiddleware

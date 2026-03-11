@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Text.RegularExpressions;
 
-namespace SICOVWEB_MCA
+namespace SICOVWEB_MCA.Helpers
 {
     public class ValidadorDatos
    
@@ -16,7 +16,7 @@ namespace SICOVWEB_MCA
         }
        
 
-public async Task InvokeAsync(HttpContext context) // Invoca cada solicitud
+public async Task InvokeAsync(HttpContext context) // Invoca cada solicitud HTTP y realiza la validación de los datos del formulario
         {
             // Solo validar si es un POST con datos de formulario
             if (context.Request.Method == HttpMethods.Post && context.Request.HasFormContentType)

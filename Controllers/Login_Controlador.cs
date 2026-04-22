@@ -37,14 +37,29 @@ namespace SICOVWEB_MCA.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet]        
-        [Authorize]
+        [HttpGet]
+        [Authorize]  
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult PrincipalAdmin()
         {
-            if (HttpContext.Session.GetInt32("IdUsuario") == null) // Verificar si la sesión está activa
+            // La cookie [Authorize] ya garantiza autenticación
+            // Cargar sesión por si no existe (caso de refresh de página)
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+            if (idUsuario == null)
             {
-                return RedirectToAction("Login", "Login_Controlador");
+                // Si no hay sesión pero hay cookie, recrear la sesión
+                var usuarioIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (!string.IsNullOrEmpty(usuarioIdClaim) && int.TryParse(usuarioIdClaim, out int usuarioId))
+                {
+                    HttpContext.Session.SetInt32("IdUsuario", usuarioId);
+                    HttpContext.Session.SetString("UsuarioNombre", User.FindFirst(ClaimTypes.Name)?.Value ?? "Usuario");
+                    HttpContext.Session.SetString("UsuarioRol", User.FindFirst(ClaimTypes.Role)?.Value ?? "");
+                    HttpContext.Session.SetInt32("EmpleadoId", int.Parse(User.FindFirst(ClaimTypes.Sid)?.Value ?? "0"));
+                }
+                else
+                {
+                    return RedirectToAction("Logout");
+                }
             }
 
             CargarMetricasUsuario();

@@ -31,8 +31,8 @@
 
 @if (Model.Cotizacion1 != null && Model.Cotizacion2 != null)
 {
-    <div class="comparacion">
-        <div class="cotizacion-card">
+    <div class="comparacion row">
+        <div class="cotizacion-card col-6">
             <h3>Cotización #@Model.Cotizacion1.Id_cotizacion</h3>
             <p><strong>Proveedor:</strong> @Model.Cotizacion1.Proveedor.Razon_social</p>
             <p><strong>Empleado:</strong> @Model.Cotizacion1.Empleado.Nombre @Model.Cotizacion1.Empleado.Apellido_Paterno @Model.Cotizacion1.Empleado.Apellido_Materno </p>
@@ -41,7 +41,7 @@
             <p><strong>Vigencia:</strong> @Model.Cotizacion1.Fecha_Vigencia.ToShortDateString()</p>
             <p><strong>Estatus:</strong> @Model.Cotizacion1.Estatus</p>
 
-            <button type="button" class="btn-detalles" onclick="mostrarDetalles('detalles1')">Ver Detalles</button>
+            <button type="button" class="btn btn-primary" onclick="mostrarDetalles('detalles1')">Ver Detalles</button>
 
             <div id="detalles1" class="detalles oculto">
                 <table class="tabla-detalles">
@@ -72,16 +72,16 @@
             </div>
         </div>
 
-        <div class="cotizacion-card">
+        <div class="cotizacion-card col-6">
             <h3>Cotización #@Model.Cotizacion2.Id_cotizacion</h3>
             <p><strong>Proveedor:</strong> @Model.Cotizacion2.Proveedor.Razon_social</p>
-            <p><strong>Empleado:</strong> @Model.Cotizacion1.Empleado.Nombre @Model.Cotizacion1.Empleado.Apellido_Paterno @Model.Cotizacion1.Empleado.Apellido_Materno </p>
+            <p><strong>Empleado:</strong> @Model.Cotizacion2.Empleado.Nombre @Model.Cotizacion2.Empleado.Apellido_Paterno @Model.Cotizacion2.Empleado.Apellido_Materno </p>
             <p><strong>Total:</strong> @Model.Cotizacion2.Precio_total.ToString("C")</p>
             <p><strong>Fecha:</strong> @Model.Cotizacion2.Fecha.ToShortDateString()</p>
             <p><strong>Vigencia:</strong> @Model.Cotizacion2.Fecha_Vigencia.ToShortDateString()</p>
             <p><strong>Estatus:</strong> @Model.Cotizacion2.Estatus</p>
 
-            <button type="button" class="btn-detalles" onclick="mostrarDetalles('detalles2')">Ver Detalles</button>
+            <button type="button" class="btn btn-primary" onclick="mostrarDetalles('detalles2')">Ver Detalles</button>
 
             <div id="detalles2" class="detalles oculto">
                 <table class="tabla-detalles">
@@ -119,7 +119,7 @@
             <input type="radio" name="IdCotizacionSeleccionada" value="@Model.Cotizacion1.Id_cotizacion" required /> Cotización #@Model.Cotizacion1.Id_cotizacion
             <input type="radio" name="IdCotizacionSeleccionada" value="@Model.Cotizacion2.Id_cotizacion" required /> Cotización #@Model.Cotizacion2.Id_cotizacion
             <br />
-            <button type="submit" class="btn-crear">Generar Orden de Compra</button>
+            <button type="submit" class="btn btn-primary">Generar Orden de Compra</button>
         </form>
     </div>
 }

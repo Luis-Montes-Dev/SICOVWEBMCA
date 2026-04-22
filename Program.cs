@@ -87,7 +87,6 @@ app.UseSession(); // Habilita el uso de sesiones
 app.UseAuthentication(); // Habilita la autenticación
 app.UseAuthorization(); // Habilita la autorización
 
-
 app.MapControllerRoute( // Configura las rutas de los controladores
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
